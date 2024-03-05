@@ -13,7 +13,7 @@ load_env()
 
 def create_presigned_url(s3_uri: str, expiration: int=3600) -> str:
     s3_client = boto3.client("s3",
-                            AWS_ACCESS_KEY_ID=st.secrets["AWS_ACCESS_KEY"],
+                            AWS_ACCESS_KEY_ID=st.secrets["AWS_ACCESS_KEY_ID"],
                             AWS_SECRET_ACCESS_KEY=st.secrets["AWS_SECRET_ACCESS_KEY"],
                             AWS_DEFAULT_REGION='eu-west-1',)
     parsed = urlparse(s3_uri)
