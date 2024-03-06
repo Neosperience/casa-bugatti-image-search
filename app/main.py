@@ -45,16 +45,16 @@ def load_model(model_path):
 img_names, img_emb = load_csv('s3://casa-bugatti/casabugatti-bottles-embeddings.csv')
 text_model = load_model('sentence-transformers/clip-ViT-B-32-multilingual-v1')
 
-if "visibility" not in st.session_state:
-    st.session_state.visibility = "visible"
-    st.session_state.disabled = False
-
 def main():
     from . import app_description, app_name
     st.title(app_name)
     st.divider()
     st.write(app_description)
     st.divider()
+
+    if "visibility" not in st.session_state:
+        st.session_state.visibility = "visible"
+        st.session_state.disabled = False
 
     number = st.slider('Number of products to show:',1,10,5)
     text_input = st.text_input(
